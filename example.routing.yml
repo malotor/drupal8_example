@@ -1,0 +1,7 @@
+example.content:
+  path: '/example'
+  defaults:
+    _content: '\Drupal\example\Controller\ExampleController::content'
+    _title: 'Hello'
+  requirements:
+    _permission: 'access content'
