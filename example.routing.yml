@@ -1,5 +1,5 @@
 example.content:
-  path: '/example'
+  path: '/example/{name}'
   defaults:
     _content: '\Drupal\example\Controller\ExampleController::content'
     _title: 'Hello'

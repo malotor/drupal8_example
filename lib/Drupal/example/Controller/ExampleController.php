@@ -11,9 +11,9 @@ class ExampleController {
   /**
    * Generates an example page.
    */
-  public function content() {
+  public function content($name) {
     return array(
-      '#markup' => t('Hello world!'),
+      '#markup' => t('Hello ' . $name . '!'),
     );
   }
 }
