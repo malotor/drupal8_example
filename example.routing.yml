@@ -5,3 +5,10 @@ example.content:
     _title: 'Hello'
   requirements:
     _permission: 'access content'
+example.form:
+  path: '/example-form'
+  defaults:
+    _title: 'Example form'
+    _form: '\Drupal\example\Form\ExampleForm'
+  requirements:
+    _permission: 'access content'
