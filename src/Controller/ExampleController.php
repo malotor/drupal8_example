@@ -8,7 +8,7 @@ namespace Drupal\example\Controller;
 /**
  * Example page controller.
  */
-class ExampleController 
+class ExampleController { 
   /**
    * Generates an example page.
    */
