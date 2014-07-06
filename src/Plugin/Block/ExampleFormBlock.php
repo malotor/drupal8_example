@@ -21,8 +21,10 @@ class ExampleFormBlock extends BlockBase {
    */
   public function build() {
 
+    $form = \Drupal::formBuilder()->getForm('Drupal\example\Form\ExampleForm');
+
     return array(
-      '#children' => 'Form!',
+      '#children' => drupal_render($form),
     );
   }
 }
