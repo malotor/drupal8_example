@@ -5,8 +5,11 @@ namespace Drupal\example\Calculator;
 
 class Calculator {
 
-	function add($operantA, $operantB) {
-		return $operantA + $operantB;
+	function add($arg1, $arg2) {
+		return $arg1 + $arg2;
 	}
 
+	function subtract($arg1, $arg2) {
+		return $arg1 - $arg2;
+	}
 }

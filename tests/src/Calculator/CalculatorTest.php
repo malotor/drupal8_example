@@ -40,9 +40,18 @@ class CalculatorTest extends UnitTestCase {
   public function testAdd() {
     $sut = new Calculator();
 
-    $this->assertEquals($sut->add(2,5) , 7);
+    $this->assertEquals(7, $sut->add(2,5));
 
-    $this->assertEquals($sut->add(4,4) , 8);
+    $this->assertEquals(8, $sut->add(4,4));
+
+  }
+
+  public function testSubstract() {
+    $sut = new Calculator();
+
+    $this->assertEquals(3, $sut->subtract(5,2));
+
+    $this->assertEquals(2, $sut->subtract(4,2));
 
   }
 
