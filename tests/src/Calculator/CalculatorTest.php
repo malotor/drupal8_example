@@ -1,9 +1,15 @@
 <?php
 /*
-
+  #Add test
   2 + 3 = 5
   4 + 4 = 8
 
+  #Subtract test
+  5 - 2 = 3
+  4 - 2 = 2
+  
+  #Negative number accept
+  2 - 5 = -3
 
 */
 /**
