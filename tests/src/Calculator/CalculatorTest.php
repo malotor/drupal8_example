@@ -42,6 +42,8 @@ class CalculatorTest extends UnitTestCase {
 
     $this->assertEquals($sut->add(2,5) , 7);
 
+    $this->assertEquals($sut->add(4,4) , 8);
+
   }
 
 }
