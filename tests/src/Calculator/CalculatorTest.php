@@ -1,13 +1,20 @@
 <?php
 /*
   #Add test
-  2 + 3 = 5
+  2 + 5 = 7
   4 + 4 = 8
 
   #Subtract test
   5 - 2 = 3
   4 - 2 = 2
   
+  #Multiply
+  2 * 5 = 10
+  
+  #Division
+  10 / 2 = 5
+  3 / 0 = ERROR
+
   #Negative number accept
   2 - 5 = -3
 
@@ -54,11 +61,26 @@ class CalculatorTest extends UnitTestCase {
 
   public function testSubstract() {
     $sut = new Calculator();
-
+    
     $this->assertEquals(3, $sut->subtract(5,2));
 
     $this->assertEquals(2, $sut->subtract(4,2));
 
+
   }
+  public function testDivision() {
+    $sut = new Calculator();
+
+    $this->assertEquals(5, $sut->division(10,2));
+
+  }
+
+  public function testMultiplication() {
+    $sut = new Calculator();
+
+    $this->assertEquals(10, $sut->multiplication(2,5));
+
+  }
+
 
 }
