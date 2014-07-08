@@ -37,6 +37,11 @@ class CalculatorTest extends UnitTestCase {
     parent::setUp();
   }
 
-  
+  public function testAdd() {
+    $sut = new Calculator();
+
+    $this->assertEquals($sut->add(2,5) , 7);
+
+  }
 
 }
