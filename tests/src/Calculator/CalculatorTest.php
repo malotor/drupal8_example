@@ -29,6 +29,7 @@ namespace Drupal\example\Tests;
 use Drupal\Tests\UnitTestCase;
 
 use Drupal\example\Calculator\Calculator;
+use Drupal\example\Calculator\CalculatorProxy;
 /**
  * @ingroup Calculator
  * @group Calculator
@@ -82,5 +83,19 @@ class CalculatorTest extends UnitTestCase {
 
   }
 
+   public function testProxyAdd() {
+    $calculator = new Calculator();
+    $calculatorProxy = new CalculatorProxy($calculator);
+
+    $this->assertEquals(7, $calculatorProxy->binaryOperation('add', 2,5));
+
+  }
+  public function testProxySubtract() {
+    $calculator = new Calculator();
+    $calculatorProxy = new CalculatorProxy($calculator);
+
+    $this->assertEquals(-3, $calculatorProxy->binaryOperation('subtract', 2,5));
+
+  }
 
 }
