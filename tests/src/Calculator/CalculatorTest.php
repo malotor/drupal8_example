@@ -83,19 +83,14 @@ class CalculatorTest extends UnitTestCase {
 
   }
 
-   public function testProxyAdd() {
+   public function testProxyOperations() {
     $calculator = new Calculator();
     $calculatorProxy = new CalculatorProxy($calculator);
 
     $this->assertEquals(7, $calculatorProxy->binaryOperation('add', 2,5));
-
-  }
-  public function testProxySubtract() {
-    $calculator = new Calculator();
-    $calculatorProxy = new CalculatorProxy($calculator);
-
     $this->assertEquals(-3, $calculatorProxy->binaryOperation('subtract', 2,5));
-
+    $this->assertEquals(10, $calculatorProxy->binaryOperation('multiplication', 2,5));
+    $this->assertEquals(2.5, $calculatorProxy->binaryOperation('division', 5,2));
   }
-
+  
 }
