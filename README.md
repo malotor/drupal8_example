@@ -1,4 +1,4 @@
-Drupal 8 Module develepment tutorial
+Drupal 8 Module development tutorial
 ===============
 
 Example module for Drupal 8. 
