@@ -12,60 +12,6 @@ class DivisionByZero extends \Exception {
    }
 }
 
-interface ibinaryOperation {
-	public function execute($arg1, $arg2);
-}
-
-
-class binaryOperation {
-	public function __construct($binaryCalculator) {
-		$this->binaryCalculator = $binaryCalculator;
-	}
-
-}
-
-class binaryOperationAdd extends binaryOperation implements ibinaryOperation {
-		public function execute($arg1, $arg2) {
-		return $this->binaryCalculator->add($arg1, $arg2);
-	}
-}
-
-class binaryOperationSubtract extends binaryOperation implements ibinaryOperation {
-	public function execute($arg1, $arg2) {
-		return $this->binaryCalculator->subtract($arg1, $arg2);
-	}
-}
-class binaryOperationMultiplication extends binaryOperation implements ibinaryOperation {
-	public function execute($arg1, $arg2) {
-		return $this->binaryCalculator->multiplication($arg1, $arg2);
-	}
-}
-class binaryOperationDivision extends binaryOperation implements ibinaryOperation {
-	public function execute($arg1, $arg2) {
-		return $this->binaryCalculator->division($arg1, $arg2);
-	}
-}
-
-class binaryOperatorFactory {
-
-  public static function GetOperation($operation, $calculator) {
-    switch ($operation) {
-      case 'add': 
-      	return new binaryOperationAdd($calculator); 
-      break;
-      case 'subtract': 
-      	return new binaryOperationSubtract($calculator);
-      break;
-      case 'multiplication': 
-      	return new binaryOperationMultiplication($calculator);
-      break;
-      case 'division': 
-      	return new binaryOperationDivision($calculator);
-      break;
-    }
-  }
-}
-
 class CalculatorProxy {
 
 	private $calculator;
@@ -82,10 +28,7 @@ class CalculatorProxy {
 	*/
 	public function binaryOperation($operation, $arg1, $arg2) {
 		
-		
-		$binaryOperation = binaryOperatorFactory::GetOperation($operation, $this->calculator);
-		$result = $binaryOperation->execute($arg1,$arg2);
-		
+		$result = $this->calculator->{$operation}($arg1, $arg2);
 
 		return $result;
 	}
