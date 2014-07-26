@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains Drupal\phpunit_example\Tests\AddClassTest
+ * Contains Drupal\example\Tests\MyClassTest
  */
 
 namespace Drupal\example\Tests;
