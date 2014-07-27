@@ -93,4 +93,13 @@ class CalculatorTest extends UnitTestCase {
     $this->assertEquals(2.5, $calculatorProxy->binaryOperation('division', 5,2));
   }
   
+  /**
+   * @expectedException CalculatorDivisionByZero
+   */
+
+  public function testDivisionByZero() {
+    $calculator = new Calculator();
+    $calculatorProxy = new CalculatorProxy($calculator);
+    $result = $calculatorProxy->binaryOperation('division', 3,0);
+  }
 }
