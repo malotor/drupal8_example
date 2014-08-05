@@ -4,7 +4,7 @@
 namespace Drupal\example\Calculator;
 
 
-class DivisionByZero extends \Exception {
+class CalculatorDivisionByZero extends \Exception {
    public function __construct($message = null, $code = 0, Exception $previous = null)
    {
    		$message = 'Division by zero';
@@ -19,15 +19,17 @@ class CalculatorProxy {
 	public function __construct($binaryCalculator) {
 		$this->calculator = $binaryCalculator;
 	}
-	/*
+	
 	protected function validateArguments($operation, $arg1, $arg2) {
-		if ($operation == 'division') && ($arg2 == 0) {
-			throw new DivisionByZero();
+		if ( ($operation == 'division') && ($arg2 == 0) ) {
+			throw new CalculatorDivisionByZero();
 		}
 	}
-	*/
+	
 	public function binaryOperation($operation, $arg1, $arg2) {
 		
+		$this->validateArguments($operation, $arg1, $arg2);
+
 		$result = $this->calculator->{$operation}($arg1, $arg2);
 
 		return $result;
