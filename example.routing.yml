@@ -5,17 +5,17 @@ example.content:
     _title: 'Hello'
   requirements:
     _permission: 'access content'
-example.advanced_content:
-  path: '/advanced_example'
-  defaults:
-    _content: '\Drupal\example\Controller\AdvancedExampleController::content'
-    _title: 'Advanced Hello'
-  requirements:
-    _permission: 'access content'
 example.form:
   path: '/example-form'
   defaults:
     _title: 'Example form'
     _form: '\Drupal\example\Form\ExampleForm'
+  requirements:
+    _permission: 'access content'
+example.user_info:
+  path: '/user_info'
+  defaults:
+    _content: '\Drupal\example\Controller\UserInfoController::content'
+    _title: 'User information'
   requirements:
     _permission: 'access content'

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains \Drupal\example\Controller\AdvancedExampleController.
+ * Contains \Drupal\example\Controller\UserInfoController.
  */
 namespace Drupal\example\Controller;
 
@@ -13,7 +13,7 @@ use Drupal\Core\Session\AccountInterface;
 /**
  * Example page controller.
  */
-class AdvancedExampleController extends ControllerBase { 
+class UserInfoController extends ControllerBase { 
 	
 	/**
    * @var AccountInterface $account
@@ -42,29 +42,32 @@ class AdvancedExampleController extends ControllerBase {
    * Generates an example page.
    */
   public function content() {
-  	// Get current user data.
+  	
+    $header = array(
+      t('Uid'),
+      t('Username'),
+      t('Email'),
+    );
 
-    $uid = $this->account->id();
-    $username = $this->account->getUsername();
-    $email = $this->account->getEmail();
-
-    $header = array(t('Uid'), t('Username'), t('Email'));
     $rows = array(
-      array($uid, $username, $email),
+      array(
+        $this->account->id(),
+        $this->account->getUsername(), 
+        $this->account->getEmail(),
+      ),
     );
     
     return array(
       'title' => array(
-        '#markup' => t('Account information'),
+        '#markup' => t('This is your user information.'),
       ),
       'table' => array(
         '#theme' => 'table',
         '#header' => $header,
         '#rows' => $rows,
         '#attributes' => array('class' => array('table-class')),
-
       ),
-      
     );
+
   }
 }
