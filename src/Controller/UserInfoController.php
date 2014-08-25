@@ -44,9 +44,9 @@ class UserInfoController extends ControllerBase {
   public function content() {
   	
     $header = array(
-      t('Uid'),
-      t('Username'),
-      t('Email'),
+      $this->t('Uid'),
+      $this->t('Username'),
+      $this->t('Email'),
     );
 
     $rows = array(

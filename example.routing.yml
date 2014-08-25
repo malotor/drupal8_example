@@ -19,3 +19,10 @@ example.user_info:
     _title: 'User information'
   requirements:
     _permission: 'access content'
+example.demo_service:
+  path: '/demo_service'
+  defaults:
+    _content: '\Drupal\example\Controller\ServiceDemoController::content'
+    _title: 'Service demo'
+  requirements:
+    _permission: 'access content'
