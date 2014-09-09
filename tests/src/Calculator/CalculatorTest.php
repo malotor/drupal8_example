@@ -24,12 +24,14 @@
  * Contains Drupal\phpunit_example\Tests\CalculatorTest
  */
 
-namespace Drupal\example\Tests;
+namespace Drupal\example\tests;
 
 use Drupal\Tests\UnitTestCase;
 
 use Drupal\example\Calculator\Calculator;
 use Drupal\example\Calculator\CalculatorProxy;
+
+
 /**
  * @ingroup Calculator
  * @group Calculator
@@ -94,7 +96,7 @@ class CalculatorTest extends UnitTestCase {
   }
   
   /**
-   * @expectedException CalculatorDivisionByZero
+   * @expectedException Drupal\example\Calculator\CalculatorDivisionByZero
    */
 
   public function testDivisionByZero() {
