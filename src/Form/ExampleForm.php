@@ -58,10 +58,11 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, array &$form_state) {
-    
+    /*
     if (($form_state['values']['operation'] == '/') && ($form_state['values']['second_number']==0) ) {
       $this->setFormError('second_number', $form_state, $this->t('Division by zero'));
     }
+    */
 
     if (!is_numeric($form_state['values']['second_number'])) {
       $this->setFormError('second_number', $form_state, $this->t('Value must be a number'));
@@ -85,7 +86,11 @@ class ExampleForm extends FormBase {
     $calculator = new Calculator();
     $calculatorProxy = new CalculatorProxy($calculator);
 
-    $result = $calculatorProxy->binaryOperation($op, $x, $y);
+    try {
+      $result = $calculatorProxy->binaryOperation($op, $x, $y);
+    } catch (Exception $e) {
+      drupal_set_message($e->getMessage(), 'error');
+    }
 
     drupal_set_message($this->t('The result is @number', array('@number' => $result)));
   }
