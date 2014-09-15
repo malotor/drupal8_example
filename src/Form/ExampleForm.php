@@ -5,6 +5,10 @@
  */
 namespace Drupal\example\Form;
 use Drupal\Core\Form\FormBase;
+
+use Drupal\example\Calculator\Calculator;
+use Drupal\example\Calculator\CalculatorProxy;
+
 /**
  * Implements an example form.
  */
@@ -33,10 +37,10 @@ class ExampleForm extends FormBase {
       '#type' => 'select',
       '#title' => $this->t('Operation'),
       '#options' => array(
-         '+'=>'+',
-         '-'=>'-',
-         '*'=>'*',
-         '/'=>'/',
+         'add'=>'+',
+         'subtract'=>'-',
+         'multiplication'=>'*',
+         'division'=>'/',
        ),
        '#default_value' => '+',
        '#description' => t('Select the operation'),
@@ -54,10 +58,11 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, array &$form_state) {
-    
+    /*
     if (($form_state['values']['operation'] == '/') && ($form_state['values']['second_number']==0) ) {
       $this->setFormError('second_number', $form_state, $this->t('Division by zero'));
     }
+    */
 
     if (!is_numeric($form_state['values']['second_number'])) {
       $this->setFormError('second_number', $form_state, $this->t('Value must be a number'));
@@ -77,23 +82,16 @@ class ExampleForm extends FormBase {
     $y = (double) $form_state['values']['second_number'];
     $op = $form_state['values']['operation'];
     
-    switch ($op) {
-      case '+':
-        $result = $x + $y ;
-        break;
-      
-      case '-':
-        $result = $x - $y ;
-        break;
-      case '*':
-        $result = $x * $y ;
-        break;
+    //Integrate Calculator 
+    $calculator = new Calculator();
+    $calculatorProxy = new CalculatorProxy($calculator);
 
-      case '/':
-        $result = $x / $y ;
-        break;
+    try {
+      $result = $calculatorProxy->binaryOperation($op, $x, $y);
+    } catch (Exception $e) {
+      drupal_set_message($e->getMessage(), 'error');
     }
-    
+
     drupal_set_message($this->t('The result is @number', array('@number' => $result)));
   }
 }
