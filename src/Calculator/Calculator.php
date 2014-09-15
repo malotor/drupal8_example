@@ -14,23 +14,8 @@ class CalculatorDivisionByZero extends \Exception {
 
 class Calculator {
 
-	function add($arg1, $arg2) {
-		return $arg1 + $arg2;
-	}
-
-	function subtract($arg1, $arg2) {
-		return $arg1 - $arg2;
-	}
-
-	function multiplication($arg1, $arg2) {
-		return $arg1 * $arg2;
-	}
-
-	function division($arg1, $arg2) {
-    if ( $arg2 == 0  ) {
-			throw new CalculatorDivisionByZero();
-		}
-		return $arg1 / $arg2;
-	}
+  function execute(IBinaryOperation $binaryOperation, $arg1, $arg2) {
+    return $binaryOperation->execute($arg1, $arg2);
+  }
 
 }

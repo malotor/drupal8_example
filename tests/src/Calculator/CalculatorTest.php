@@ -53,37 +53,6 @@ class CalculatorTest extends UnitTestCase {
     parent::setUp();
   }
 
-  public function testAdd() {
-    $sut = new Calculator();
-
-    $this->assertEquals(7, $sut->add(2,5));
-
-    $this->assertEquals(8, $sut->add(4,4));
-
-  }
-
-  public function testSubstract() {
-    $sut = new Calculator();
-    
-    $this->assertEquals(3, $sut->subtract(5,2));
-
-    $this->assertEquals(2, $sut->subtract(4,2));
-
-
-  }
-  public function testDivision() {
-    $sut = new Calculator();
-
-    $this->assertEquals(5, $sut->division(10,2));
-
-  }
-
-  public function testMultiplication() {
-    $sut = new Calculator();
-
-    $this->assertEquals(10, $sut->multiplication(2,5));
-
-  }
 
    public function testProxyOperations() {
     $calculator = new Calculator();
