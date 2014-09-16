@@ -55,8 +55,8 @@ class CalculatorTest extends UnitTestCase {
 
 
    public function testProxyOperations() {
-    $calculator = new Calculator();
-    $calculatorProxy = new CalculatorProxy($calculator);
+
+    $calculatorProxy = new CalculatorProxy();
 
     $this->assertEquals(7, $calculatorProxy->binaryOperation('add', 2,5));
     $this->assertEquals(-3, $calculatorProxy->binaryOperation('subtract', 2,5));
@@ -65,12 +65,12 @@ class CalculatorTest extends UnitTestCase {
   }
   
   /**
-   * @expectedException Drupal\example\Calculator\CalculatorDivisionByZero
+   * @expectedException Drupal\example\Calculator\CalculatorException
    */
 
   public function testDivisionByZero() {
-    $calculator = new Calculator();
-    $calculatorProxy = new CalculatorProxy($calculator);
+
+    $calculatorProxy = new CalculatorProxy();
     $result = $calculatorProxy->binaryOperation('division', 3,0);
   }
 }

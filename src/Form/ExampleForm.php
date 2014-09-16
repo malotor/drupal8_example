@@ -8,6 +8,7 @@ use Drupal\Core\Form\FormBase;
 
 use Drupal\example\Calculator\Calculator;
 use Drupal\example\Calculator\CalculatorProxy;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements an example form.
@@ -58,11 +59,6 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, array &$form_state) {
-    /*
-    if (($form_state['values']['operation'] == '/') && ($form_state['values']['second_number']==0) ) {
-      $this->setFormError('second_number', $form_state, $this->t('Division by zero'));
-    }
-    */
 
     if (!is_numeric($form_state['values']['second_number'])) {
       $this->setFormError('second_number', $form_state, $this->t('Value must be a number'));
@@ -81,17 +77,18 @@ class ExampleForm extends FormBase {
     $x = (double) $form_state['values']['firts_number'];
     $y = (double) $form_state['values']['second_number'];
     $op = $form_state['values']['operation'];
-    
-    //Integrate Calculator 
+
+    //Integrate Calculator
     $calculator = new Calculator();
     $calculatorProxy = new CalculatorProxy($calculator);
 
     try {
       $result = $calculatorProxy->binaryOperation($op, $x, $y);
-    } catch (Exception $e) {
+      drupal_set_message($this->t('The result is @number', array('@number' => $result)));
+    } catch (\Exception $e) {
       drupal_set_message($e->getMessage(), 'error');
     }
 
-    drupal_set_message($this->t('The result is @number', array('@number' => $result)));
+
   }
 }

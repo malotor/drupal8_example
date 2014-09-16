@@ -1,16 +1,13 @@
 <?php
 
-
 namespace Drupal\example\Calculator;
 
 
 class CalculatorProxy {
 
-	private $calculator;
   private $operations;
 
-	public function __construct($binaryCalculator) {
-		$this->calculator = $binaryCalculator;
+	public function __construct() {
 
     $this->operations['add'] = new AddOperation();
     $this->operations['subtract'] = new SubtractOperation();
@@ -20,7 +17,7 @@ class CalculatorProxy {
 
 	public function binaryOperation($operation, $arg1, $arg2) {
 
-		return  $this->calculator->execute($this->operations[$operation], $arg1, $arg2);
+		return Calculator::execute($this->operations[$operation], $arg1, $arg2);
 
 	}
 }
