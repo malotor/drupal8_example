@@ -28,8 +28,8 @@ namespace Drupal\example\tests;
 
 use Drupal\Tests\UnitTestCase;
 
+
 use Drupal\example\Calculator\Calculator;
-use Drupal\example\Calculator\CalculatorProxy;
 
 
 /**
@@ -54,23 +54,20 @@ class CalculatorTest extends UnitTestCase {
   }
 
 
-   public function testProxyOperations() {
+   public function testCalculator() {
 
-    $calculatorProxy = new CalculatorProxy();
-
-    $this->assertEquals(7, $calculatorProxy->binaryOperation('add', 2,5));
-    $this->assertEquals(-3, $calculatorProxy->binaryOperation('subtract', 2,5));
-    $this->assertEquals(10, $calculatorProxy->binaryOperation('multiplication', 2,5));
-    $this->assertEquals(2.5, $calculatorProxy->binaryOperation('division', 5,2));
+    $this->assertEquals(7, Calculator::binaryOperation('add', 2,5));
+    $this->assertEquals(-3, Calculator::binaryOperation('subtract', 2,5));
+    $this->assertEquals(10, Calculator::binaryOperation('multiplication', 2,5));
+    $this->assertEquals(2.5, Calculator::binaryOperation('division', 5,2));
   }
   
   /**
-   * @expectedException Drupal\example\Calculator\CalculatorException
+   * @expectedException \Drupal\example\Calculator\CalculatorException
    */
 
   public function testDivisionByZero() {
 
-    $calculatorProxy = new CalculatorProxy();
-    $result = $calculatorProxy->binaryOperation('division', 3,0);
+    $result = Calculator::binaryOperation('division', 3,0);
   }
 }
