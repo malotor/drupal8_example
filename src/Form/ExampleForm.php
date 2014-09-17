@@ -7,8 +7,7 @@ namespace Drupal\example\Form;
 use Drupal\Core\Form\FormBase;
 
 use Drupal\example\Calculator\Calculator;
-use Drupal\example\Calculator\CalculatorProxy;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+
 
 /**
  * Implements an example form.
@@ -78,14 +77,14 @@ class ExampleForm extends FormBase {
     $y = (double) $form_state['values']['second_number'];
     $op = $form_state['values']['operation'];
 
-    //Integrate Calculator
-    $calculator = new Calculator();
-    $calculatorProxy = new CalculatorProxy($calculator);
 
     try {
-      $result = $calculatorProxy->binaryOperation($op, $x, $y);
+
+      $result = Calculator::binaryOperation($op, $x, $y);
       drupal_set_message($this->t('The result is @number', array('@number' => $result)));
+
     } catch (\Exception $e) {
+
       drupal_set_message($e->getMessage(), 'error');
     }
 

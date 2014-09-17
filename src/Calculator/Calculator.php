@@ -14,6 +14,7 @@ class Calculator {
     $operations['division'] = new DivisionOperation();
 
     $binaryOperation = $operations[$operation];
+
     return $binaryOperation->execute($arg1, $arg2);
 
 	}
