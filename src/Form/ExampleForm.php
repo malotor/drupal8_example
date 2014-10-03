@@ -9,10 +9,13 @@ use Drupal\Core\Form\FormBase;
 use Drupal\example\Calculator\Calculator;
 
 
+use Drupal\Core\Form\FormInterface;
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements an example form.
  */
-class ExampleForm extends FormBase {
+class ExampleForm extends FormBase implements FormInterface {
   /**
    * {@inheritdoc}.
    */
@@ -22,7 +25,7 @@ class ExampleForm extends FormBase {
   /**
    * {@inheritdoc}.
    */
-  public function buildForm(array $form, array &$form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $form['firts_number'] = array(
       '#type' => 'textfield',
       '#required' => TRUE,
@@ -57,25 +60,29 @@ class ExampleForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, array &$form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state) {
 
-    if (!is_numeric($form_state['values']['second_number'])) {
-      $this->setFormError('second_number', $form_state, $this->t('Value must be a number'));
+    $values = $form_state->getValues();
+
+    if (!is_numeric($values['second_number'])) {
+      $form_state->setErrorByName('second_number',  $this->t('Value must be a number'));
     }
     
-    if (!is_numeric($form_state['values']['firts_number'])) {
-      $this->setFormError('firts_number', $form_state, $this->t('Value must be a number'));
+    if (!is_numeric($values['firts_number'])) {
+      $form_state->setErrorByName('firts_number', $this->t('Value must be a number'));
     }
 
   }
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, array &$form_state) {
-    
-    $x = (double) $form_state['values']['firts_number'];
-    $y = (double) $form_state['values']['second_number'];
-    $op = $form_state['values']['operation'];
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+
+    $values = $form_state->getValues();
+
+    $x = (double) $values['firts_number'];
+    $y = (double) $values['second_number'];
+    $op = $values['operation'];
 
 
     try {
