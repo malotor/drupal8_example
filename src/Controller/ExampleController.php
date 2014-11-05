@@ -15,7 +15,7 @@ class ExampleController {
   public function content($name) {
 
     return array(
-      '#markup' => t('Hello @name!', array('name' => $name)),
+      '#markup' => t("Hello @name", array('@name' => $name)),
     );
   }
 }
