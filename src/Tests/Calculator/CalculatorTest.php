@@ -24,7 +24,7 @@
  * Contains Drupal\phpunit_example\Tests\CalculatorTest
  */
 
-namespace Drupal\example\Tests;
+namespace Drupal\example\Tests\Calculator;
 
 use Drupal\Tests\UnitTestCase;
 
