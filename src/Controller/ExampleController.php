@@ -18,4 +18,14 @@ class ExampleController {
       '#markup' => t("Hello @name", array('@name' => $name)),
     );
   }
+
+  /**
+   * Generates an example page.
+   */
+  public function secret() {
+
+    return array(
+      '#markup' => t("This is a secret place"),
+    );
+  }
 }

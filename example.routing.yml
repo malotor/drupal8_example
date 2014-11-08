@@ -26,3 +26,10 @@ example.demo_service:
     _title: 'Service demo'
   requirements:
     _permission: 'access content'
+example.secret:
+  path: '/secret'
+  defaults:
+    _content: '\Drupal\example\Controller\ExampleController::secret'
+    _title: 'A secret place'
+  requirements:
+    _permission: 'access secret zone'

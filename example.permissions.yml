@@ -1,0 +1,4 @@
+access secret zone:
+  title: 'Access secret zone'
+  description: 'This permission allow acces to secret page'
+  restrict access: TRUE
