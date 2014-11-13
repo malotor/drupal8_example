@@ -60,12 +60,12 @@ class ExampleTest extends WebTestBase {
   public function testSimpleTestDemoService() {
     $this->drupalGet('demo_service');
     $this->assertResponse(200, 'Demo Service is available');
-    $this->assertRaw('Hello Word');
+    $this->assertRaw('Hello World');
   }
   /**
    * Test Example Calculator Form.
    *
-   * Check if all fiels for calculator form are correctly rendered and the form submit is working
+   * Check if all fields for calculator form are correctly rendered and the form submit is working
    */
   public function testSimpleTestCalculatorForm() {
 
@@ -76,15 +76,22 @@ class ExampleTest extends WebTestBase {
     $this->assertFieldByName('second_number', null, 'Second number field is available');
     $this->assertFieldByName('operation', null, 'Operation field is available');
 
+  }
+
+  /**
+   * Test Example Calculator Form Submit.
+   *
+   * Check if calculator form submit works
+   */
+  public function testSimpleTestCalculatorFormSubmit() {
+
     //Test the form submit
     $edit = array(
-      'firts_number[value]' => 2,
-      'second_number[value]' => 3,
-      'operation[value]' => '+',
+      'firts_number' => '2',
+      'second_number' => '3',
+      'operation' => 'add',
     );
-    $this->drupalPostForm('example-form', $edit, t('Save'));
-
-    // Check that our simpletest_example node has been created.
+    $this->drupalPostForm('example-form', $edit, t('Save'))
     $this->assertRaw('The result is 5');
 
   }
