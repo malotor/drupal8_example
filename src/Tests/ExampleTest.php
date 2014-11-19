@@ -91,7 +91,7 @@ class ExampleTest extends WebTestBase {
       'second_number' => '3',
       'operation' => 'add',
     );
-    $this->drupalPostForm('example-form', $edit, t('Save'))
+    $this->drupalPostForm('example-form', $edit, t('Save'));
     $this->assertRaw('The result is 5');
 
   }
