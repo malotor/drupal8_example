@@ -3,7 +3,7 @@ Drupal 8 Module development tutorial
 
 Example module for Drupal 8. 
 
-This module covers a serie of Drupal 8 tutorial from my blog http://www.deveclub.es .
+This module covers a serie of Drupal 8 tutorial from my blog http://www.develclub.es/drupal-8.
 
 Tutorial de instalación de Drupal 8 usando Drush
 
