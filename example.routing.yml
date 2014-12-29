@@ -1,35 +1,35 @@
 example.content:
   path: '/example/{name}'
   defaults:
-    _content: '\Drupal\example\Controller\ExampleController::content'
+    _controller: '\Drupal\example\Controller\ExampleController::content'
     _title: 'Hello'
   requirements:
     _permission: 'access content'
 example.form:
-  path: '/example-form'
+  path: '/example/calculator'
   defaults:
-    _title: 'Example form'
+    _title: 'Calculator'
     _form: '\Drupal\example\Form\ExampleForm'
   requirements:
     _permission: 'access content'
 example.user_info:
-  path: '/user_info'
+  path: '/example/user_info'
   defaults:
-    _content: '\Drupal\example\Controller\UserInfoController::content'
+    _controller: '\Drupal\example\Controller\UserInfoController::content'
     _title: 'User information'
   requirements:
     _permission: 'access content'
 example.demo_service:
-  path: '/demo_service'
+  path: '/example/demo_service'
   defaults:
-    _content: '\Drupal\example\Controller\ServiceDemoController::content'
+    _controller: '\Drupal\example\Controller\ServiceDemoController::content'
     _title: 'Service demo'
   requirements:
     _permission: 'access content'
 example.secret:
-  path: '/secret'
+  path: '/example/secret'
   defaults:
-    _content: '\Drupal\example\Controller\ExampleController::secret'
+    _controller: '\Drupal\example\Controller\ExampleController::secret'
     _title: 'A secret place'
   requirements:
     _permission: 'access secret zone'

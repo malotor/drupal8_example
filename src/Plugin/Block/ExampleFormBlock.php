@@ -5,8 +5,8 @@
  */
 namespace Drupal\example\Plugin\Block;
 
-use Drupal\block\BlockBase;
-use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Block\BlockBase;
+
 /**
  * Provides a simple block.
  *
@@ -23,8 +23,13 @@ class ExampleFormBlock extends BlockBase {
 
     $form = \Drupal::formBuilder()->getForm('Drupal\example\Form\ExampleForm');
 
+    $form_markup = \Drupal::service('renderer')->render($form);
+
     return array(
-      '#children' => drupal_render($form),
+
+        '#markup' => $form_markup,
+
     );
+
   }
 }

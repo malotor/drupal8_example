@@ -27,7 +27,6 @@ use Drupal\Core\Url;
 
 class ExampleTraitsBlock extends BlockBase {
 
-  use StringTranslationTrait;
   use LinkGeneratorTrait;
   use UrlGeneratorTrait;
 

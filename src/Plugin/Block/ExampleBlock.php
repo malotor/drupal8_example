@@ -5,8 +5,10 @@
  */
 namespace Drupal\example\Plugin\Block;
 
-use Drupal\block\BlockBase;
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+
 /**
  * Provides a simple block.
  *
@@ -15,6 +17,7 @@ use Drupal\Core\Session\AccountInterface;
  *   admin_label = @Translation("My example block")
  * )
  */
+
 class ExampleBlock extends BlockBase {
   /**
    * Implements \Drupal\block\BlockBase::blockBuild().
@@ -25,18 +28,17 @@ class ExampleBlock extends BlockBase {
     $config = $this->getConfiguration();
 
     return array(
-      '#children' => 'Hellow ' .$config['example_block_name']. '. This is a block!',
+      '#markup' => 'Hellow ' .$config['example_block_name']. '. This is a block!',
     );
   }
-	/**
-   * Implements \Drupal\block\BlockBase::access().
-   */
+
+  /*
   public function access(AccountInterface $account) {
     return $account->hasPermission('access content');
   }
-
+  */
   
-  public function blockForm($form, &$form_state) {
+  public function blockForm($form, FormStateInterface $form_state) {
     //Get basic form block from the parent
     $form = parent::blockForm($form, $form_state);
     //Retrieve existing configuration for this block.
@@ -50,9 +52,10 @@ class ExampleBlock extends BlockBase {
     return $form;
   }
   
-  public function blockSubmit($form, &$form_state) {
+  public function blockSubmit($form, FormStateInterface $form_state) {
     // Save our custom settings when the form is submitted.
-    $this->setConfigurationValue('example_block_name', $form_state['values']['example_block_name']);
+    $values = $form_state->getValues();
+    $this->setConfigurationValue('example_block_name', $values['example_block_name']);
   }
 
 }
